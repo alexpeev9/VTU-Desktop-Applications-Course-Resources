@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp", "BookApp\BookApp.csproj", "{4529FA07-0E77-40F7-9472-E6B6E93200C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4529FA07-0E77-40F7-9472-E6B6E93200C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4529FA07-0E77-40F7-9472-E6B6E93200C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4529FA07-0E77-40F7-9472-E6B6E93200C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4529FA07-0E77-40F7-9472-E6B6E93200C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A46C9C99-DC73-4C8D-B1D6-C83588087B25}
+	EndGlobalSection
+EndGlobal
