@@ -19,8 +19,8 @@ namespace BookApp
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            Register registerForm = new Register();
-            registerForm.Show();
+            //Register registerForm = new Register();
+            //registerForm.Show();
             this.Hide();
         }
     }
