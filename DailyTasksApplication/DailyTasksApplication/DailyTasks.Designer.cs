@@ -29,76 +29,88 @@ namespace DailyTasksApplication
         /// </summary>
         private void InitializeComponent()
         {
-            this.TitleInput = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.DailyTaskLabel = new System.Windows.Forms.Label();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.DescriptionLabel = new System.Windows.Forms.Label();
+            this.IsDoneLabel = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
-            this.DescriptionTextArea = new System.Windows.Forms.TextBox();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.TrueCheckBox = new System.Windows.Forms.CheckBox();
             this.FalseCheckBox = new System.Windows.Forms.CheckBox();
-            this.DailyTasksView = new System.Windows.Forms.DataGridView();
             this.CreateButton = new System.Windows.Forms.Button();
+            this.TaskGridView = new System.Windows.Forms.DataGridView();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.ClearFormButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.DailyTasksView)).BeginInit();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.TaskGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // TitleInput
+            // DailyTaskLabel
             // 
-            this.TitleInput.AutoSize = true;
-            this.TitleInput.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TitleInput.Location = new System.Drawing.Point(27, 61);
-            this.TitleInput.Name = "TitleInput";
-            this.TitleInput.Size = new System.Drawing.Size(49, 28);
-            this.TitleInput.TabIndex = 0;
-            this.TitleInput.Text = "Title";
+            this.DailyTaskLabel.AutoSize = true;
+            this.DailyTaskLabel.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DailyTaskLabel.Location = new System.Drawing.Point(170, 21);
+            this.DailyTaskLabel.Name = "DailyTaskLabel";
+            this.DailyTaskLabel.Size = new System.Drawing.Size(178, 46);
+            this.DailyTaskLabel.TabIndex = 0;
+            this.DailyTaskLabel.Text = "Daily Tasks";
             // 
-            // label1
+            // TitleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(27, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Description";
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TitleLabel.Location = new System.Drawing.Point(80, 108);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(53, 28);
+            this.TitleLabel.TabIndex = 1;
+            this.TitleLabel.Text = "Title:";
             // 
-            // label2
+            // DescriptionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(27, 301);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 28);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "IsDone";
+            this.DescriptionLabel.AutoSize = true;
+            this.DescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DescriptionLabel.Location = new System.Drawing.Point(12, 159);
+            this.DescriptionLabel.Name = "DescriptionLabel";
+            this.DescriptionLabel.Size = new System.Drawing.Size(121, 28);
+            this.DescriptionLabel.TabIndex = 2;
+            this.DescriptionLabel.Text = "Description: ";
+            // 
+            // IsDoneLabel
+            // 
+            this.IsDoneLabel.AutoSize = true;
+            this.IsDoneLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.IsDoneLabel.Location = new System.Drawing.Point(57, 275);
+            this.IsDoneLabel.Name = "IsDoneLabel";
+            this.IsDoneLabel.Size = new System.Drawing.Size(76, 28);
+            this.IsDoneLabel.TabIndex = 3;
+            this.IsDoneLabel.Text = "IsDone:";
             // 
             // TitleTextBox
             // 
             this.TitleTextBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TitleTextBox.Location = new System.Drawing.Point(164, 58);
+            this.TitleTextBox.Location = new System.Drawing.Point(150, 105);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(193, 34);
-            this.TitleTextBox.TabIndex = 3;
+            this.TitleTextBox.Size = new System.Drawing.Size(209, 34);
+            this.TitleTextBox.TabIndex = 4;
             // 
-            // DescriptionTextArea
+            // DescriptionTextBox
             // 
-            this.DescriptionTextArea.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DescriptionTextArea.Location = new System.Drawing.Point(164, 132);
-            this.DescriptionTextArea.Multiline = true;
-            this.DescriptionTextArea.Name = "DescriptionTextArea";
-            this.DescriptionTextArea.Size = new System.Drawing.Size(423, 126);
-            this.DescriptionTextArea.TabIndex = 4;
+            this.DescriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(150, 159);
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.Size = new System.Drawing.Size(209, 104);
+            this.DescriptionTextBox.TabIndex = 5;
             // 
             // TrueCheckBox
             // 
             this.TrueCheckBox.AutoSize = true;
-            this.TrueCheckBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TrueCheckBox.Location = new System.Drawing.Point(164, 303);
+            this.TrueCheckBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TrueCheckBox.Location = new System.Drawing.Point(170, 275);
             this.TrueCheckBox.Name = "TrueCheckBox";
-            this.TrueCheckBox.Size = new System.Drawing.Size(67, 29);
-            this.TrueCheckBox.TabIndex = 5;
+            this.TrueCheckBox.Size = new System.Drawing.Size(67, 32);
+            this.TrueCheckBox.TabIndex = 8;
             this.TrueCheckBox.Text = "True";
             this.TrueCheckBox.UseVisualStyleBackColor = true;
             this.TrueCheckBox.CheckedChanged += new System.EventHandler(this.TrueCheckBox_CheckedChanged);
@@ -106,49 +118,46 @@ namespace DailyTasksApplication
             // FalseCheckBox
             // 
             this.FalseCheckBox.AutoSize = true;
-            this.FalseCheckBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FalseCheckBox.Location = new System.Drawing.Point(268, 303);
+            this.FalseCheckBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FalseCheckBox.Location = new System.Drawing.Point(257, 275);
             this.FalseCheckBox.Name = "FalseCheckBox";
-            this.FalseCheckBox.Size = new System.Drawing.Size(72, 29);
-            this.FalseCheckBox.TabIndex = 6;
+            this.FalseCheckBox.Size = new System.Drawing.Size(73, 32);
+            this.FalseCheckBox.TabIndex = 9;
             this.FalseCheckBox.Text = "False";
             this.FalseCheckBox.UseVisualStyleBackColor = true;
             this.FalseCheckBox.CheckedChanged += new System.EventHandler(this.FalseCheckBox_CheckedChanged);
-            // 
-            // DailyTasksView
-            // 
-            this.DailyTasksView.AllowUserToAddRows = false;
-            this.DailyTasksView.AllowUserToDeleteRows = false;
-            this.DailyTasksView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DailyTasksView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DailyTasksView.Location = new System.Drawing.Point(632, 61);
-            this.DailyTasksView.Name = "DailyTasksView";
-            this.DailyTasksView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.DailyTasksView.RowTemplate.Height = 25;
-            this.DailyTasksView.Size = new System.Drawing.Size(475, 320);
-            this.DailyTasksView.TabIndex = 7;
-            this.DailyTasksView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DailyTasksView_RowHeaderMouseClick);
             // 
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.Lime;
             this.CreateButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CreateButton.Location = new System.Drawing.Point(27, 374);
+            this.CreateButton.Location = new System.Drawing.Point(18, 334);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(112, 41);
-            this.CreateButton.TabIndex = 8;
+            this.CreateButton.Size = new System.Drawing.Size(115, 48);
+            this.CreateButton.TabIndex = 10;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+            // 
+            // TaskGridView
+            // 
+            this.TaskGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TaskGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TaskGridView.Location = new System.Drawing.Point(445, 21);
+            this.TaskGridView.Name = "TaskGridView";
+            this.TaskGridView.RowTemplate.Height = 25;
+            this.TaskGridView.Size = new System.Drawing.Size(707, 286);
+            this.TaskGridView.TabIndex = 11;
+            this.TaskGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TaskGridView_RowHeaderMouseClick);
             // 
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.UpdateButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.UpdateButton.Location = new System.Drawing.Point(173, 374);
+            this.UpdateButton.Location = new System.Drawing.Point(150, 334);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(112, 41);
-            this.UpdateButton.TabIndex = 9;
+            this.UpdateButton.Size = new System.Drawing.Size(115, 48);
+            this.UpdateButton.TabIndex = 12;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = false;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -157,46 +166,60 @@ namespace DailyTasksApplication
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.Red;
             this.DeleteButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DeleteButton.Location = new System.Drawing.Point(317, 374);
+            this.DeleteButton.Location = new System.Drawing.Point(287, 334);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(112, 41);
-            this.DeleteButton.TabIndex = 10;
+            this.DeleteButton.Size = new System.Drawing.Size(115, 48);
+            this.DeleteButton.TabIndex = 13;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // ClearFormButton
+            // ClearButton
             // 
-            this.ClearFormButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClearFormButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ClearFormButton.Location = new System.Drawing.Point(462, 374);
-            this.ClearFormButton.Name = "ClearFormButton";
-            this.ClearFormButton.Size = new System.Drawing.Size(125, 41);
-            this.ClearFormButton.TabIndex = 11;
-            this.ClearFormButton.Text = "Clear Form";
-            this.ClearFormButton.UseVisualStyleBackColor = false;
-            this.ClearFormButton.Click += new System.EventHandler(this.ClearFormButton_Click);
+            this.ClearButton.BackColor = System.Drawing.Color.Aqua;
+            this.ClearButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClearButton.Location = new System.Drawing.Point(421, 334);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(115, 48);
+            this.ClearButton.TabIndex = 14;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = false;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.BackColor = System.Drawing.Color.Yellow;
+            this.ExitButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ExitButton.Location = new System.Drawing.Point(552, 334);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(115, 48);
+            this.ExitButton.TabIndex = 15;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // DailyTasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1147, 450);
-            this.Controls.Add(this.ClearFormButton);
+            this.ClientSize = new System.Drawing.Size(1164, 450);
+            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.TaskGridView);
             this.Controls.Add(this.CreateButton);
-            this.Controls.Add(this.DailyTasksView);
             this.Controls.Add(this.FalseCheckBox);
             this.Controls.Add(this.TrueCheckBox);
-            this.Controls.Add(this.DescriptionTextArea);
+            this.Controls.Add(this.DescriptionTextBox);
             this.Controls.Add(this.TitleTextBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.TitleInput);
+            this.Controls.Add(this.IsDoneLabel);
+            this.Controls.Add(this.DescriptionLabel);
+            this.Controls.Add(this.TitleLabel);
+            this.Controls.Add(this.DailyTaskLabel);
             this.Name = "DailyTasks";
             this.Text = "DailyTasks Form";
-            ((System.ComponentModel.ISupportInitialize)(this.DailyTasksView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaskGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,17 +227,19 @@ namespace DailyTasksApplication
 
         #endregion
 
-        private System.Windows.Forms.Label TitleInput;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label DailyTaskLabel;
+        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label DescriptionLabel;
+        private System.Windows.Forms.Label IsDoneLabel;
         private System.Windows.Forms.TextBox TitleTextBox;
-        private System.Windows.Forms.TextBox DescriptionTextArea;
+        private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.CheckBox TrueCheckBox;
         private System.Windows.Forms.CheckBox FalseCheckBox;
-        private System.Windows.Forms.DataGridView DailyTasksView;
         private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.DataGridView TaskGridView;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button ClearFormButton;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button ExitButton;
     }
 }

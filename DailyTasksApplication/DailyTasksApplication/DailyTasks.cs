@@ -1,6 +1,5 @@
 ﻿using DailyTasksApplication.Database;
 using DailyTasksApplication.Database.Models;
-using DailyTasksApplication.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,45 +17,44 @@ namespace DailyTasksApplication
     {
         private readonly DailyTasksDbContext dbContext;
         private readonly int userId;
-        private int temporaryTaskId;
+        private int taskId;
         public DailyTasks(DailyTasksDbContext dbContext, int userId)
         {
             InitializeComponent();
-            this.temporaryTaskId = 0;
             this.dbContext = dbContext;
             this.userId = userId;
-            DisplayViewRows();
+            DisplayView();
             PopulateView();
+            taskId = 0;
         }
 
-        private void DisplayViewRows()
+        private void DisplayView()
         {
-            this.DailyTasksView.ColumnCount = 5;
-            this.DailyTasksView.Columns[0].Name = "Title";
-            this.DailyTasksView.Columns[1].Name = "IsDone";
-            this.DailyTasksView.Columns[2].Name = "Date";
-            this.DailyTasksView.Columns[2].Name = "Creator";
-            this.DailyTasksView.Columns[4].Name = "Id";
-
+            this.TaskGridView.ColumnCount = 5;
+            this.TaskGridView.Columns[0].Name = "Id";
+            this.TaskGridView.Columns[1].Name = "Title";
+            this.TaskGridView.Columns[2].Name = "IsDone";
+            this.TaskGridView.Columns[3].Name = "Date";
+            this.TaskGridView.Columns[4].Name = "Creator";
         }
         private void PopulateView()
         {
-            DailyTasksView.Rows.Clear();
-            var tasks = this.dbContext.Tasks.Include(t => t.User).Select( t => new Database.Models.Task { 
-                                                                             Id = t.Id,
-                                                                             Title = t.Title,
-                                                                             Description = t.Description,
-                                                                             IsDone = t.IsDone,
-                                                                             CreatedAt = t.CreatedAt,
-                                                                             User = new User
-                                                                             {
-                                                                                 Username = t.User.Username
-                                                                             }
-                                                                        }).ToList();
+            this.TaskGridView.Rows.Clear();
+            var tasks = this.dbContext.Tasks.Include(t => t.User).Select(t => new Database.Models.Task
+            {
+                Id = t.Id,
+                Title = t.Title,
+                IsDone = t.IsDone,
+                CreatedAt = t.CreatedAt,
+                User = new User
+                {
+                    Username = t.User.Username
+                }
+            }).ToList();
             foreach (var task in tasks)
             {
-                string[] currentRow = { task.Title, task.IsDone.ToString(), task.CreatedAt.Date.ToString() , task.User.Username, task.Id.ToString() };
-                this.DailyTasksView.Rows.Add(currentRow);
+                string[] currentRow = { task.Id.ToString(), task.Title, task.IsDone.ToString(), task.CreatedAt.Date.ToString(), task.User.Username };
+                this.TaskGridView.Rows.Add(currentRow);
             }
         }
 
@@ -64,7 +62,7 @@ namespace DailyTasksApplication
         {
             var task = new Database.Models.Task();
             task.Title = this.TitleTextBox.Text;
-            task.Description = this.DescriptionTextArea.Text;
+            task.Description = this.DescriptionTextBox.Text;
             task.UserId = this.userId;
             if (this.TrueCheckBox.Checked)
             {
@@ -76,28 +74,54 @@ namespace DailyTasksApplication
             }
             this.dbContext.Tasks.Add(task);
             this.dbContext.SaveChanges();
-            this.ClearForm();
-            this.PopulateView();
+
+            PopulateView();
+            this.Clear();
         }
-        private void ClearForm()
+
+        private void Clear()
         {
             this.TitleTextBox.Text = "";
-            this.DescriptionTextArea.Text = "";
+            this.DescriptionTextBox.Text = "";
             this.TrueCheckBox.Checked = false;
             this.FalseCheckBox.Checked = false;
-
-            this.temporaryTaskId = 0;
+            this.taskId = 0;
         }
-        private void DailyTasksView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+
+        private void TrueCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
+            if (this.TrueCheckBox.Checked)
+            {
+                this.TrueCheckBox.Checked = true;
+                if (this.FalseCheckBox.Checked)
+                {
+                    this.FalseCheckBox.Checked = false;
+                }
+            }
+        }
+
+        private void FalseCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.FalseCheckBox.Checked)
+            {
+                this.FalseCheckBox.Checked = true;
+                if (this.TrueCheckBox.Checked)
+                {
+                    this.TrueCheckBox.Checked = false;
+                }
+            }
+        }
+
+        private void TaskGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.Clear();
             int rowIndex = e.RowIndex;
-            string textId = this.DailyTasksView.Rows[rowIndex].Cells[4].Value.ToString();
-            int id = int.Parse(textId);
-            this.temporaryTaskId = id;
+            int id = int.Parse(this.TaskGridView.Rows[rowIndex].Cells[0].Value.ToString());
             var task = this.dbContext.Tasks.Find(id);
+
+            this.taskId = task.Id;
             this.TitleTextBox.Text = task.Title;
-            this.DescriptionTextArea.Text = task.Description;
+            this.DescriptionTextBox.Text = task.Description;
             if (task.IsDone == true)
             {
                 this.TrueCheckBox.Checked = true;
@@ -110,73 +134,56 @@ namespace DailyTasksApplication
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            if (temporaryTaskId != 0)
+            if (this.taskId != 0)
             {
-                var taskDb = this.dbContext.Tasks.Find(this.temporaryTaskId);
-                taskDb.Title = this.TitleTextBox.Text;
-                taskDb.Description = this.DescriptionTextArea.Text;
-                if(this.TrueCheckBox.Checked)
+                var task = this.dbContext.Tasks.Find(this.taskId);
+                task.Title = this.TitleTextBox.Text;
+                task.Description = this.DescriptionTextBox.Text;
+                if (this.TrueCheckBox.Checked)
                 {
-                    taskDb.IsDone = true;
+                    task.IsDone = true;
                 }
                 else
                 {
-                    taskDb.IsDone = false;
+                    task.IsDone = false;
                 }
-                this.dbContext.Tasks.Update(taskDb);
+                this.dbContext.Tasks.Update(task);
                 this.dbContext.SaveChanges();
-                this.ClearForm();
+                this.Clear();
                 this.PopulateView();
             }
             else
             {
-                MessageBox.Show("No Task was Selected.");
+                MessageBox.Show("Please select a task to edit.");
             }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login(this.dbContext);
+            loginForm.Show();
+            this.Hide();
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            this.Clear();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (this.temporaryTaskId == 0)
+            if (this.taskId != 0)
             {
-                MessageBox.Show("Please Select a Task");
+                var task = this.dbContext.Tasks.Find(taskId);
+                this.dbContext.Remove(task);
+                this.dbContext.SaveChanges();
+
+                this.Clear();
+                this.PopulateView();
             }
             else
             {
-                var task = this.dbContext.Tasks.Find(this.temporaryTaskId);
-                this.dbContext.Tasks.Remove(task);
-                this.dbContext.SaveChanges();
-                this.PopulateView();
-            }
-            ClearForm();
-        }
-
-        private void ClearFormButton_Click(object sender, EventArgs e)
-        {
-            this.ClearForm();
-        }
-
-        private void TrueCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.TrueCheckBox.Checked == true)
-            {
-                this.TrueCheckBox.Checked = true;
-                if(this.FalseCheckBox.Checked == true)
-                {
-                    this.FalseCheckBox.Checked = false;
-                }
-            }
-        }
-
-        private void FalseCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            // False
-            if (this.FalseCheckBox.Checked == true)
-            {
-                this.FalseCheckBox.Checked = true;
-                if(this.TrueCheckBox.Checked == true)
-                {
-                    this.TrueCheckBox.Checked = false;
-                }
+                MessageBox.Show("Please select a task to delete.");
             }
         }
     }
