@@ -66,8 +66,7 @@ namespace DailyTasksApplication
             await this.dbContext.Users.AddAsync(user);
             await this.dbContext.SaveChangesAsync();
 
-            //MessageBox.Show($"{username} is Registered!");
-            DailyTasks dailyTasks = new DailyTasks(this.dbContext,user.Id);
+            DailyTasks dailyTasks = new DailyTasks(this.dbContext, user.Id);
             dailyTasks.Show();
             this.Hide();
         }
@@ -76,8 +75,7 @@ namespace DailyTasksApplication
         {
             Login loginForm = new Login(dbContext);
             loginForm.Show();
-            this.Hide();
+            this.Close();
         }
-
     }
 }

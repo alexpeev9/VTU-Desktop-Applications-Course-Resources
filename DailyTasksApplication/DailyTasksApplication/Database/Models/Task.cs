@@ -7,7 +7,6 @@
     {
         public Task()
         {
-            this.IsDone = false;
             this.CreatedAt = DateTime.UtcNow;
         }
         public string Title { get; set; }
