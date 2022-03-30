@@ -20,7 +20,7 @@ namespace BookApp
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Register(bookDbContext));
+			Application.Run(new Login(bookDbContext));
         }
     }
 }

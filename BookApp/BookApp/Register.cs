@@ -1,4 +1,5 @@
 ﻿using BookApp.DbContext;
+using BookApp.Helpers;
 using BookApp.Models;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace BookApp
 			this.RepeatPaswordTextBox.PasswordChar = '*';
         }
 
-		private void RegisterButton_Click(object sender, EventArgs e)
+		private async void RegisterButton_Click(object sender, EventArgs e)
 		{
 			string username = this.UsernameTextBox.Text;
 			string password = this.PasswordTextBox.Text;
@@ -40,13 +41,21 @@ namespace BookApp
 				MessageBox.Show("Password do not match!");
 				return;
 			}
-			User user = new User();
-			user.Username = username;
-			user.PasswordHash = password;
-			user.Salt = "Today";
-			this.bookDbContext.Users.Add(user);
-			this.bookDbContext.SaveChanges();
-            Login loginForm = new Login();
+
+			string salt = PasswordManager.GenerateSalt();
+			string hashedPassword = PasswordManager.HashPassword(password, salt);
+
+			User user = new User()
+			{
+				Username = username,
+				PasswordHash = hashedPassword,
+				Salt = salt
+			};
+
+			await this.bookDbContext.Users.AddAsync(user);
+			await this.bookDbContext.SaveChangesAsync();
+
+			Login loginForm = new Login(bookDbContext);
             loginForm.Show();
             Hide();
         }
