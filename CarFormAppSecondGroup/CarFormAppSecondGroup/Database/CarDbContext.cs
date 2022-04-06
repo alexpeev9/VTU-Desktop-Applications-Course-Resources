@@ -14,9 +14,8 @@ namespace CarFormAppSecondGroup.Database
 				optionsBuilder.UseSqlServer(connectionString);
 			}
 		}
-
-		DbSet<Car> Cars { get; set; }
-		DbSet<User> Users { get; set; }
+		public DbSet<Car> Cars { get; set; }
+		public DbSet<User> Users { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

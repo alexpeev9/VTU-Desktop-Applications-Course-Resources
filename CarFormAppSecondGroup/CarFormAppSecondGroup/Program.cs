@@ -22,7 +22,7 @@ namespace CarFormAppSecondGroup
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1(dbContext));
+			Application.Run(new LoginForm(dbContext));
 		}
 	}
 }
