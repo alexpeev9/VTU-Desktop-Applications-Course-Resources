@@ -35,6 +35,9 @@ namespace BookApp
 			this.YearTextBox = new System.Windows.Forms.TextBox();
 			this.TitleTextBox = new System.Windows.Forms.TextBox();
 			this.CreateButton = new System.Windows.Forms.Button();
+			this.BookGridView = new System.Windows.Forms.DataGridView();
+			this.UpdateButton = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.BookGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// bookHeader
@@ -85,6 +88,7 @@ namespace BookApp
 			// 
 			// CreateButton
 			// 
+			this.CreateButton.BackColor = System.Drawing.Color.Lime;
 			this.CreateButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.CreateButton.Location = new System.Drawing.Point(257, 339);
 			this.CreateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -92,14 +96,44 @@ namespace BookApp
 			this.CreateButton.Size = new System.Drawing.Size(190, 73);
 			this.CreateButton.TabIndex = 14;
 			this.CreateButton.Text = "Create";
-			this.CreateButton.UseVisualStyleBackColor = true;
+			this.CreateButton.UseVisualStyleBackColor = false;
 			this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+			// 
+			// BookGridView
+			// 
+			this.BookGridView.AllowUserToAddRows = false;
+			this.BookGridView.AllowUserToDeleteRows = false;
+			this.BookGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.BookGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.BookGridView.Location = new System.Drawing.Point(668, 41);
+			this.BookGridView.Name = "BookGridView";
+			this.BookGridView.ReadOnly = true;
+			this.BookGridView.RowHeadersWidth = 51;
+			this.BookGridView.RowTemplate.Height = 29;
+			this.BookGridView.Size = new System.Drawing.Size(921, 371);
+			this.BookGridView.TabIndex = 19;
+			this.BookGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.BookGridView_RowHeaderMouseClick);
+			// 
+			// UpdateButton
+			// 
+			this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+			this.UpdateButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.UpdateButton.Location = new System.Drawing.Point(453, 339);
+			this.UpdateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.UpdateButton.Name = "UpdateButton";
+			this.UpdateButton.Size = new System.Drawing.Size(190, 73);
+			this.UpdateButton.TabIndex = 20;
+			this.UpdateButton.Text = "Update";
+			this.UpdateButton.UseVisualStyleBackColor = false;
+			this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
 			// 
 			// BookForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(1619, 450);
+			this.Controls.Add(this.UpdateButton);
+			this.Controls.Add(this.BookGridView);
 			this.Controls.Add(this.PasswordLabel);
 			this.Controls.Add(this.UsernameLabel);
 			this.Controls.Add(this.YearTextBox);
@@ -108,6 +142,7 @@ namespace BookApp
 			this.Controls.Add(this.bookHeader);
 			this.Name = "BookForm";
 			this.Text = "Book";
+			((System.ComponentModel.ISupportInitialize)(this.BookGridView)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -121,5 +156,7 @@ namespace BookApp
 		private System.Windows.Forms.TextBox YearTextBox;
 		private System.Windows.Forms.TextBox TitleTextBox;
 		private System.Windows.Forms.Button CreateButton;
+		private System.Windows.Forms.DataGridView BookGridView;
+		private System.Windows.Forms.Button UpdateButton;
 	}
 }
