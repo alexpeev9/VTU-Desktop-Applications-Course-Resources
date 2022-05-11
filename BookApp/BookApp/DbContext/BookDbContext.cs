@@ -1,8 +1,11 @@
 ﻿namespace BookApp.DbContext
 {
-    using BookApp.Models;
+	using BookApp.Helpers;
+	using BookApp.Models;
     using Microsoft.EntityFrameworkCore;
-    public class BookDbContext : DbContext
+	using System;
+
+	public class BookDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -12,7 +15,7 @@
             base.OnConfiguring(optionsBuilder);
             if(optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=BookDatabase1;Integrated security=true;");
+                optionsBuilder.UseSqlServer("Server=.;Database=BookDatabase5;Integrated security=true;");
             }
         }
 
@@ -20,11 +23,35 @@
 		{
 			base.OnModelCreating(modelBuilder);
 
-			modelBuilder
-				.Entity<Book>()
-				.HasOne(t => t.User)
-				.WithMany(u => u.Books)
-				.HasForeignKey(t => t.UserId);
+			var salt = PasswordManager.GenerateSalt();
+
+			modelBuilder.Entity<User>().HasData(
+				new User
+				{
+					Id = 1,
+					Username = "MockUser",
+					Salt = salt,
+					PasswordHash = PasswordManager.HashPassword("12345", salt),
+					CreatedAt = DateTime.UtcNow
+				});
+
+			modelBuilder.Entity<Book>().HasData(
+				new Book
+				{
+					Id = 1,
+					Title = "Back to the Past",
+					ReleaseYear = 2005,
+					CreatedAt = DateTime.UtcNow,
+					UserId = 1
+				},
+				new Book
+				{
+					Id = 2,
+					Title = "Healer Newsday",
+					ReleaseYear = 2010,
+					CreatedAt = DateTime.UtcNow,
+					UserId = 1
+				});
 		}
 	}
 }

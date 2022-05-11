@@ -44,6 +44,24 @@ namespace BookApp.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2022, 5, 11, 5, 50, 9, 259, DateTimeKind.Utc).AddTicks(8835),
+                            ReleaseYear = 2005,
+                            Title = "Back to the Past",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2022, 5, 11, 5, 50, 9, 260, DateTimeKind.Utc).AddTicks(142),
+                            ReleaseYear = 2010,
+                            Title = "Healer Newsday",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("BookApp.Models.User", b =>
@@ -72,6 +90,16 @@ namespace BookApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2022, 5, 11, 5, 50, 9, 255, DateTimeKind.Utc).AddTicks(3631),
+                            PasswordHash = "SJvdgjS8C3CYKzggcgXlBTat9LLtsn2NcFuvQrWzXZo=",
+                            Salt = "5ZYl79PVfesZzFPctbaHew==",
+                            Username = "MockUser"
+                        });
                 });
 
             modelBuilder.Entity("BookApp.Models.Book", b =>

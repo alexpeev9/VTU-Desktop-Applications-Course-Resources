@@ -45,6 +45,21 @@ namespace BookApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "CreatedAt", "PasswordHash", "Salt", "Username" },
+                values: new object[] { 1, new DateTime(2022, 5, 11, 5, 50, 9, 255, DateTimeKind.Utc).AddTicks(3631), "SJvdgjS8C3CYKzggcgXlBTat9LLtsn2NcFuvQrWzXZo=", "5ZYl79PVfesZzFPctbaHew==", "MockUser" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "CreatedAt", "ReleaseYear", "Title", "UserId" },
+                values: new object[] { 1, new DateTime(2022, 5, 11, 5, 50, 9, 259, DateTimeKind.Utc).AddTicks(8835), 2005, "Back to the Past", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "CreatedAt", "ReleaseYear", "Title", "UserId" },
+                values: new object[] { 2, new DateTime(2022, 5, 11, 5, 50, 9, 260, DateTimeKind.Utc).AddTicks(142), 2010, "Healer Newsday", 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Books_UserId",
                 table: "Books",
