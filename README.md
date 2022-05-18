@@ -10,6 +10,7 @@
 - Може да проверите в **SQL Server Management Studio** дали се е създала база.
 - Вече всичко е нагласено и може да стартирате проекта.
 
+Репозитори с проекти от минала година: [https://github.com/alexpeev9/.Net-Exercises-Computer-Science-3rd-Course](https://github.com/alexpeev9/.Net-Exercises-Computer-Science-3rd-Course)
 # Examples
 <a href="https://github.com/alexpeev9/VTU-Desktop-Applications-Course-Resources">
   <img src="https://i.imgur.com/MdVZIIa.png" alt="Image 1" width="600">
